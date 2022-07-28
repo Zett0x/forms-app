@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -8,21 +8,20 @@ import { NgForm } from '@angular/forms';
 })
 export class BasicosComponent implements OnInit {
 
+
+  @ViewChild('myForm') myForm!:NgForm;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  save(myForm:NgForm){
-    console.log(myForm)
+  save(){
+    console.log(this.myForm)
   }
 
-  formFieldIsValid(field:string,myForm:NgForm):boolean{
+  formFieldIsValid(field:string):boolean{
 
-    if(myForm.form.controls[field]?.status==='INVALID' && myForm.form.controls[field]?.touched)
-      return false;
-
-    return true;
+    return this.myForm?.form.controls[field]?.status==='INVALID' && this.myForm?.form.controls[field]?.touched
 
   }
 

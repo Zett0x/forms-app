@@ -16,7 +16,8 @@ export class BasicosComponent implements OnInit {
   }
 
   save(){
-    console.log(this.myForm)
+    console.log('Posteo correcto');
+    this.myForm.resetForm();
   }
 
   formFieldIsValid(field:string):boolean{

@@ -1,0 +1,60 @@
+<h2>Template: Básicos</h2>
+<hr/>
+
+<div class="row">
+  <div class="col">
+
+    <form (ngSubmit)="save(myForm)" #myForm="ngForm" autocomplete="off">
+      <!--CAMPO DE PRODUCTO-->
+      <div class="mb-3 row">
+
+
+        <label class="col-sm-3 col-form-label">Producto</label>
+        <div class="col-sm-9">
+          <input ngModel name="product" type="text" class="form-control" placeholder="Nombre del producto" required minlength="3">
+          <span *ngIf="myForm.form.controls['product']?.status==='INVALID' && myForm.form.controls['product']?.touched" class="form-text text-danger">Debe de ser de 3 letras</span>
+        </div>
+
+      </div>
+
+      <!--PRECIO DEL PRODUCTO-->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Precio</label>
+        <div class="col-sm-9">
+          <input ngModel name="price" type="number" class="form-control" placeholder="Precio del producto" required>
+          <span class="form-text text-danger">Debe de ser de 3 letras</span>
+        </div>
+
+      </div>
+
+
+      <!--CAMPO DE EXISTENCIAS-->
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Existencias</label>
+        <div class="col-sm-9">
+          <input type="number" ngModel name="stocks" class="form-control" placeholder="Existencias del producto" required>
+          <span class="form-text text-danger">Debe de ser de 3 letras</span>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end">Guardar</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{myForm.valid}}</pre>
+
+    <span>Value</span>
+    <pre>{{myForm.value | json}}</pre>
+  </div>
+</div>

@@ -17,4 +17,13 @@ export class BasicosComponent implements OnInit {
     console.log(myForm)
   }
 
+  formFieldIsValid(field:string,myForm:NgForm):boolean{
+
+    if(myForm.form.controls[field]?.status==='INVALID' && myForm.form.controls[field]?.touched)
+      return false;
+
+    return true;
+
+  }
+
 }

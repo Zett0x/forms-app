@@ -12,7 +12,7 @@
         <label class="col-sm-3 col-form-label">Producto</label>
         <div class="col-sm-9">
           <input ngModel name="product" type="text" class="form-control" placeholder="Nombre del producto" required minlength="3">
-          <span *ngIf="myForm.form.controls['product']?.status==='INVALID' && myForm.form.controls['product']?.touched" class="form-text text-danger">Debe de ser de 3 letras</span>
+          <span *ngIf="!formFieldIsValid('product',myForm)" class="form-text text-danger">Debe de ser de 3 letras</span>
         </div>
 
       </div>

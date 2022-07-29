@@ -1,12 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-interface FormFields{
-  product:string,
-  price:number,
-  stocks:number
 
-}
 
 @Component({
   selector: 'app-basicos',
@@ -20,7 +15,7 @@ export class BasicosComponent implements OnInit {
 
   @ViewChild('myForm') myForm!:NgForm;
 
-  initForm:FormFields={
+  initForm={
     product:'',
     price:0,
     stocks:0

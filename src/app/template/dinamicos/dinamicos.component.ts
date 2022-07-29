@@ -7,25 +7,18 @@ import { BasicosComponent } from '../basicos/basicos.component';
   templateUrl: './dinamicos.component.html',
   styleUrls: ['./dinamicos.component.css']
 })
-export class DinamicosComponent  implements OnInit {
+export class DinamicosComponent extends BasicosComponent implements OnInit {
 
-  @ViewChild('myForm') myForm!:NgForm;
-  ngOnInit(): void {
+
+  @ViewChild('myForm') override myForm!:NgForm;
+  override ngOnInit(): void {
+
 
   }
   constructor(){
-
+    super();
   };
 
-  save(): void {
-    console.log(this.myForm)
-  }
-
-  formFieldIsValid(field:string):boolean{
-
-    return this.myForm?.form.controls[field]?.status==='INVALID' && this.myForm?.form.controls[field]?.touched
-
-  }
 
 
 

@@ -1,1 +1,39 @@
-<p>dinamicos works!</p>
+<h2>Template: <small>Dinámicos</small></h2>
+<hr/>
+
+<form (ngSubmit)="save()" autocomplete="off" #myForm="ngForm">
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Nombre</label>
+    <div class="col-sm-9">
+      <input ngModel type="text" name="name" class="form-control" placeholder="Nombre de la persona" required minlength="1">
+      <span *ngIf="formFieldIsValid('name')" class="form-text text-danger">Este campo es obligatorio</span>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+
+    <div class="col-sm-12">
+     <button type="button"
+     class="btn btn-primary float-end"
+     (click)="save()"
+     >
+      Guardar
+     </button>
+
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <span>Valid</span>
+      <pre>{{myForm.valid}}</pre>
+
+      <span>Value</span>
+      <pre>{{myForm.value | json}}</pre>
+    </div>
+  </div>
+</form>

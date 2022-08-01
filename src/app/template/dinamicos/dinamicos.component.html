@@ -2,11 +2,78 @@
 <hr/>
 
 <form (ngSubmit)="save()" autocomplete="off" #myForm="ngForm">
+
+ <!--NOMBRE-->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Nombre</label>
     <div class="col-sm-9">
-      <input ngModel type="text" name="name" class="form-control" placeholder="Nombre de la persona" required minlength="1">
+      <input [ngModel]="persona.nombre" type="text" name="name" class="form-control" placeholder="Nombre de la persona" required minlength="1">
       <span *ngIf="formFieldIsValid('name')" class="form-text text-danger">Este campo es obligatorio</span>
+
+    </div>
+  </div>
+
+  <!--AGREGAR FAVORITO-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Agregar</label>
+    <div class="col-sm-9">
+
+      <div class="input-group">
+        <input
+        type="text"
+        class="form-control"
+        placeholder="Agregar favorito"
+        [(ngModel)]="nuevoJuego"
+        name="nuevoJuego"
+
+        >
+        <button class="btn btn-outline-primary"
+        type="button"
+        (click)="addGame()"
+
+
+        >
+        Agregar
+
+        </button>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!--lista de juegos favoritos-->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Favoritos</label>
+    <div class="col-sm-9">
+
+
+      <div class="input-group mb-1" *ngFor="let juego of persona.favoritos;let i=index;">
+        <input
+
+        type="text"
+        class="form-control"
+        [(ngModel)]="juego.nombre"
+        name="favorito_{{i}}"
+        required
+        >
+
+        <button class="btn btn-outline-danger"
+        type="button"
+        (click)="deleteFavourite(i)"
+
+
+        >
+        Eliminar
+
+        </button>
+
+
+      </div>
+
+
+
 
     </div>
   </div>
@@ -28,7 +95,7 @@
 
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="col">
       <span>Valid</span>
       <pre>{{myForm.valid}}</pre>
@@ -36,5 +103,8 @@
       <span>Value</span>
       <pre>{{myForm.value | json}}</pre>
     </div>
-  </div>
+  </div> -->
 </form>
+
+<span>Persona</span>
+<pre>{{persona | json}}</pre>
